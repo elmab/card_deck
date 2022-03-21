@@ -45,7 +45,7 @@ export = {
                 });
             }
             var cards = deck.draw(numOfCards);
-            return res.json(cards);
+            return res.json({"cards": cards});
         });
     },
     /**
