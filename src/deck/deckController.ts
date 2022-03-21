@@ -105,7 +105,8 @@ export = {
                 });
             }
             //var deckJS = deck.toJSON()
-            return res.status(201).json(deck);
+
+            return res.status(201).json({"deckId": deck._id, "shuffled": deck.shuffled, "type":deck.type, "reamining": deck.cards.length});
         });
     },
 
