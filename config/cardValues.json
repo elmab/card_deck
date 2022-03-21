@@ -1,0 +1,64 @@
+[
+	{
+	  "value": "ACE",
+	  "code": "A",
+	  "deckType": "SHORT"
+	},
+	{
+	  "value": "2",
+	  "code":  "2"
+	},
+	{
+	  "value": "3",
+	  "code": "3"
+	},
+	{
+	  "value": "4",
+	  "code": "4"
+	},
+	{
+	  "value": "5",
+	  "code": "5"
+	},
+	{
+	  "value": "6",
+	  "code": "6",
+	  "deckType":"SHORT"
+	},
+	{
+		"value": "7",
+		"code": "7",
+		"deckType":"SHORT"  
+	},
+	{
+		"value": "8",
+		"code": "8",
+		"deckType":"SHORT"  
+	},
+	{
+		"value": "9",
+		"code": "9",
+		"deckType":"SHORT"  
+	},
+	{
+		"value": "10",
+		"code": "10",
+		"deckType":"SHORT"  
+	},
+	{
+		"value": "JACK",
+		"code": "J",
+		"deckType":"SHORT"  
+	},
+	{
+		"value": "QUEEN",
+		"code": "Q",
+		"deckType":"SHORT"  
+	},
+	{
+		"value": "KING",
+		"code": "K",
+		"deckType":"SHORT"  
+	}
+ ]
+
