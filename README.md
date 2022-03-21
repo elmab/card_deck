@@ -19,8 +19,9 @@ Configuration is in /config/global.tx .
 
 ### Request
 
-`POST /deck/`
-parameters: 
+`POST /deck/` 
+<br/>
+#parameters: 
 
   "type"   - Optional parameter specifying if deck should be "FULL" (default) or "SHORT". <br/>
   "shuffled"   - Optional parameter specifying if deck should be "FULL" (default) or "SHORT". <br/>
