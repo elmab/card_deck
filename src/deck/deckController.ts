@@ -96,7 +96,7 @@ export = {
                     error: err
                 });
             }
-            return res.status(201).json(deck);
+            return res.status(201).json(deck._id);
         });
     },
 

@@ -23,8 +23,6 @@ const deckSchema = new Schema({
 
 deckSchema.pre('save', function(this) {
 	this.cards = this.getNewDeck();
-	console.log(this)
-	console.log(this.shuffled);
 	if(this.shuffled)
 		console.log("We need to shuffle")
   });
@@ -34,10 +32,10 @@ export = mongoose.model('deck', deckSchema);
 
 deckSchema.methods.getNewDeck = function getNewDeck(params, callback) {
 	console.log("CreATIng A NEw DECK")
-	var cards=[];
+	var cards=[] as any;
 	suites.forEach(s=> {
 		cardValues.forEach(c => {
-			if(this.type=="SHORT" && c.deckType=="SHORT"){
+			if((this.type=="SHORT" && c.deckType=="SHORT") || this.type=="FULL"){
 				//console.log("PUTTING INSIDE ",{"value": c.value,"suite": s, "code":c.code + s[0]} )
 				var x={"value": c.value, "suite" : s, "code": c.code + s[0]} as any;
 				cards.push(x);
@@ -45,7 +43,7 @@ deckSchema.methods.getNewDeck = function getNewDeck(params, callback) {
 		})
 	})
 
-	console.log("****")
+	console.log("****", cards.length)
 	return cards;
  }
   
