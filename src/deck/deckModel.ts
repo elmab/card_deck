@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 //import arrayShuffle from 'array-shuffle';
-
+const _ = require("lodash");  
 var cardValues = require( "../../config/cardValues.json" );
 var suites = require( "../../config/suites.json" );
 console.log(cardValues);
@@ -19,6 +19,16 @@ const deckSchema = new Schema({
 	'type' : String,
 	'shuffled' : Boolean,
 	'cards' : [cardSchema]
+}, {
+	toJSON: {
+	  transform: function (doc, ret) {
+		  ret.deckID=ret._id;
+		  ret.remaining = ret.cards.length;
+		delete ret.cards;
+		delete ret._id;
+		delete ret.__v;
+	  }
+	}
 });
 
 deckSchema.pre('save', function(this) {
@@ -61,3 +71,10 @@ deckSchema.methods.shuffle = function shuffle(params, callback) {
 	//return this.cards;
 
 }
+
+deckSchema.methods.shallowCopy = function shallowCopy() {
+
+	return {"type": this.type, "remaining": this.cards.length}
+
+}
+	

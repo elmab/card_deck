@@ -84,8 +84,8 @@ export = {
      */
     create: async function (req, res) {
         const deck = new DeckModel({
-			type : req.body.type,
-			shuffled : req.body.shuffled
+			type : req.body.type || 'FULL',
+			shuffled : req.body.shuffled || false
         });
         console.log(deck)
         
@@ -96,7 +96,7 @@ export = {
                     error: err
                 });
             }
-            return res.status(201).json(deck._id);
+            return res.status(201).json(deck);
         });
     },
 
