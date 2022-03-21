@@ -55,3 +55,17 @@ Configuration is in /config/global.tx .
  {"value":"10","suite":"DIAMONDS","code":"10D","_id":"62388b30857efa4cae63cd2e"},            {"value":"10","suite":"CLUBS","code":"10C","_id":"62388b30857efa4cae63cd1c"},{"value":"6","suite":"CLUBS","code":"6C","_id":"62388b30857efa4cae63cd18"}],"deckID":"62388b30857efa4cae63cd0d","remaining":3
  }
 
+
+## Draw a caard
+
+### Request
+
+`GET /deck/:id/draw/numOfCards`
+
+ <p>
+   If number of cards is not specified, 1 card is drawn
+
+### Response
+
+
+[{"value":"10","suite":"DIAMONDS","code":"10D","_id":"62388b30857efa4cae63cd2e"},{"value":"10","suite":"CLUBS","code":"10C","_id":"62388b30857efa4cae63cd1c"}]
