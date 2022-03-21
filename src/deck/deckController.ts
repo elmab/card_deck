@@ -27,16 +27,25 @@ export = {
      * deckController.draw()
      */
     draw: function (req, res) {
-        console.log(req, "THESE ARE REQUESTS")
-        DeckModel.find((err, decks) => {
+        console.log(req.params)
+        const id = req.params.id;
+        const numOfCards = req.params.numOfCards || 1;
+        console.log(numOfCards,"*******")
+        DeckModel.findOne({_id: id}, (err, deck) => {
             if (err) {
                 return res.status(500).json({
                     message: 'Error when getting deck.',
                     error: err
                 });
             }
-            return res.send('NOT IMPLEMENTED: Author list');
-            //return res.json(decks);
+
+            if (!deck) {
+                return res.status(404).json({
+                    message: 'No such deck'
+                });
+            }
+            var cards = deck.draw(numOfCards);
+            return res.json(cards);
         });
     },
     /**
@@ -74,7 +83,6 @@ export = {
                     message: 'No such deck'
                 });
             }
-
             return res.json(deck);
         });
     },
@@ -88,7 +96,7 @@ export = {
 			shuffled : req.body.shuffled || false
         });
         console.log(deck)
-        
+        deck.postCreate();
         deck.save((err, deck) => {
             if (err) {
                 return res.status(500).json({
@@ -96,6 +104,7 @@ export = {
                     error: err
                 });
             }
+            //var deckJS = deck.toJSON()
             return res.status(201).json(deck);
         });
     },

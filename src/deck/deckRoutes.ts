@@ -16,7 +16,7 @@ router.get('/:id', deckController.show);
 /*
  * GET
  */
-router.get('/:id/draw', deckController.draw);
+router.get('/:id/draw/:numOfCards?', deckController.draw);
 
 /*
  * POST

@@ -24,24 +24,35 @@ const deckSchema = new Schema({
 	  transform: function (doc, ret) {
 		  ret.deckID=ret._id;
 		  ret.remaining = ret.cards.length;
-		delete ret.cards;
+		//delete ret.cards;
 		delete ret._id;
 		delete ret.__v;
 	  }
 	}
 });
 
-deckSchema.pre('save', function(this) {
-	this.cards = this.getNewDeck();
-	if(this.shuffled)
-		this.shuffle();
-  });
+
 export = mongoose.model('deck', deckSchema);
 
 
+//add cards and shuffle them if required
+deckSchema.methods.postCreate = function(this){
+	//deckSchema.pre('save', function(this) {
+	this.cards = this.getNewDeck();
+	if(this.shuffled)
+		this.shuffle();
+};
+	
+deckSchema.methods.draw = function draw(numOfCards) {
+	if(numOfCards===undefined || numOfCards <1 )
+		numOfCards=1
+
+	var drawn_cards = this.cards.splice(numOfCards);
+	this.save()
+
+}
 
 deckSchema.methods.getNewDeck = function getNewDeck(params, callback) {
-	console.log("CreATIng A NEw DECK")
 	var cards=[] as any;
 	suites.forEach(s=> {
 		cardValues.forEach(c => {
@@ -78,3 +89,9 @@ deckSchema.methods.shallowCopy = function shallowCopy() {
 
 }
 	
+
+deckSchema.methods.deepCopy = function deepCopy() {
+
+	var oldJSON = this.toJSON ;
+
+}
