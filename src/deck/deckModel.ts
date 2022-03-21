@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-
+//import arrayShuffle from 'array-shuffle';
 
 var cardValues = require( "../../config/cardValues.json" );
 var suites = require( "../../config/suites.json" );
@@ -24,7 +24,7 @@ const deckSchema = new Schema({
 deckSchema.pre('save', function(this) {
 	this.cards = this.getNewDeck();
 	if(this.shuffled)
-		console.log("We need to shuffle")
+		this.shuffle();
   });
 export = mongoose.model('deck', deckSchema);
 
@@ -49,6 +49,15 @@ deckSchema.methods.getNewDeck = function getNewDeck(params, callback) {
   
 
 deckSchema.methods.shuffle = function shuffle(params, callback) {
-  //if self.shuffle , do it
-  //implementation code goes here
+	console.log("SHUFFLING", this.cards.length)
+	// shuffle the cards
+	for (let i = this.cards.length - 1; i > 0; i--) {
+    	let j = Math.floor(Math.random() * i);
+    	let temp = this.cards[i];
+    	this.cards[i] = this.cards[j];
+    	this.cards[j] = temp;
+	}
+	//console.log("FINISHED SHUFFLINg")
+	//return this.cards;
+
 }
