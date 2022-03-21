@@ -47,8 +47,12 @@ deckSchema.methods.draw = function draw(numOfCards) {
 	if(numOfCards===undefined || numOfCards <1 )
 		numOfCards=1
 
-	var drawn_cards = this.cards.splice(numOfCards);
+	if(this.cards<1)
+		return this.cards;
+
+	var drawn_cards = this.cards.splice(this.cards.lengh-1, numOfCards);
 	this.save()
+	return drawn_cards;
 
 }
 

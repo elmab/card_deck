@@ -29,7 +29,7 @@ export = {
     draw: function (req, res) {
         console.log(req.params)
         const id = req.params.id;
-        const numOfCards = req.params.numOfCards || 1;
+        const numOfCards = req.params.numOfCards;
         console.log(numOfCards,"*******")
         DeckModel.findOne({_id: id}, (err, deck) => {
             if (err) {
