@@ -68,4 +68,4 @@ Configuration is in /config/global.tx .
 ### Response
 
 
-[{"value":"10","suite":"DIAMONDS","code":"10D","_id":"62388b30857efa4cae63cd2e"},{"value":"10","suite":"CLUBS","code":"10C","_id":"62388b30857efa4cae63cd1c"}]
+{"cards":[{"value":"10","suite":"HEARTS","code":"10H","_id":"62388c9a94571e2a69f67537"},{"value":"QUEEN","suite":"DIAMONDS","code":"QD","_id":"62388c9a94571e2a69f67554"}]}
