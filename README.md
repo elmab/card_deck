@@ -6,6 +6,6 @@ npm start
 
 API consists of there methods
 
-POST /deck/ 
-GET /deck/:deckID
-GET /deck/:deckID/draw/num_of_cards
+POST /deck/   <br />
+GET /deck/:deckID  <br />
+GET /deck/:deckID/draw/num_of_cards  <br />
